@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "backend": "nodemon server/index.js",
-    "frontend": "nodemon run start --prefix client",
+    "frontend": "npm run start --prefix client",
     "dev": "concurrently \"npm:backend\" \"npm:frontend\""
   },
   "author": "lqqojin",
