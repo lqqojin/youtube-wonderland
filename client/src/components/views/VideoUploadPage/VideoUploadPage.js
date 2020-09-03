@@ -61,7 +61,9 @@ const VideoUploadPage = (props) => {
                 } else {
                     alert('비디오 업로드 실패 했습니다.')
                 }
-            })
+            }).catch(err=> {
+            	 alert('비디오 업로드 실패 했습니다. '+err);
+        })
     }
     useEffect(() => {
         console.log('>>', thumbnailPath);
