@@ -77,6 +77,7 @@ const VideoUploadPage = (props) => {
             privacy,
             category,
             duration,
+	        filePath,
             thumbnail: thumbnailPath,
         }
         Axios.post('/api/video/uploadVideo', variables)
