@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import { Row, Col, List, Avatar } from 'antd';
 import Axios from "axios";
-import SideVideo from './Section/SideVideo'
+import SideVideo from './Section/SideVideo';
+import Subscribe from "./Section/Subscribe";
 
 const VideoDetailPage = (props) => {
 	const { videoId }= props.match.params;
@@ -18,7 +19,7 @@ const VideoDetailPage = (props) => {
 			} else alert('비디오 정보를 가져오길 실패했습니다.')
 		})
 	}, [])
-	
+
 	if(videoDetail && videoDetail.filePath){
 		console.log(videoDetail)
 		console.log(videoDetail.writer);
@@ -27,7 +28,9 @@ const VideoDetailPage = (props) => {
 				<Col lg={18} xs={24}>
 					<div style={{ width: '100%', padding: '3rem 4rem'}}>
 						<video style={{ width: '100%' }} src={`http://localhost:5000/${videoDetail.filePath}`} controls />
-						<List.Item>
+						<List.Item
+							actions={[<Subscribe userTo={videoDetail.writer} userFrom={localStorage.getItem('userId')} />]}
+						>
 							<List.Item.Meta
 								avatar={<Avatar src={videoDetail.writer.image} />}
 								title={videoDetail.writer.name}
@@ -40,7 +43,7 @@ const VideoDetailPage = (props) => {
 					<SideVideo />
 				</Col>
 			</Row>
-		)	
+		)
 	} else return (<div>...Loading</div>)
 }
 
