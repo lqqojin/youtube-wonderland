@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Subscribe } = require('../models/Subscibe');
+const { Subscribe } = require('../models/Subscribe');
 //=================================
 //             Subscribe
 //=================================
