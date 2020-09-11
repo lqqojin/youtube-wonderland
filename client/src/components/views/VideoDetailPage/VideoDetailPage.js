@@ -7,10 +7,9 @@ import Comment from './Section/Comment';
 
 const VideoDetailPage = (props) => {
 	const { videoId }= props.match.params;
-	const variable = {
-		videoId
-	}
+	const variable = { videoId }
 	const [videoDetail, setVideoDetail] = useState([]);
+
 	useEffect(() => {
 		Axios.post('/api/video/getVideoDetail', variable)
 		.then(res => {
@@ -18,7 +17,7 @@ const VideoDetailPage = (props) => {
 				console.log(...res.data.videoDetail);
 				setVideoDetail(...res.data.videoDetail)
 			} else alert('비디오 정보를 가져오길 실패했습니다.')
-		})
+		});
 	}, [])
 
 	if(videoDetail && videoDetail.filePath){
@@ -41,7 +40,7 @@ const VideoDetailPage = (props) => {
 							/>
 						</List.Item>
 						{/*Comment*/}
-						<Comment/>
+						<Comment postId={videoId} />
 					</div>
 				</Col>
 				<Col lg={6} xs={24}>
